@@ -3,6 +3,7 @@
 export default function routes(app) {
   app.get('/', [
     require('../controllers/detectmobile'),
+    require('../controllers/prerender'),
     require('../controllers/render')
   ]);
 

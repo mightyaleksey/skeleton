@@ -8,9 +8,11 @@
     "debug": "^2.2.0",
     "express": "^4.13.0",
     "jade": "^1.11.0",
+    "react": "^0.13.3",
     "recluster": "^0.4.0"
   },
   "devDependencies": {
+    "classname-manipulator": "^1.0.0",
     "gulp": "^3.9.0"
   },
   "config": {
