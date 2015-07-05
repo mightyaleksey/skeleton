@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import cm from 'classname-manipulator';
+import styles from './App.css';
 
 class App extends Component {
   render() {

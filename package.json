@@ -12,8 +12,12 @@
     "recluster": "^0.4.0"
   },
   "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
     "classname-manipulator": "^1.0.0",
-    "gulp": "^3.9.0"
+    "css-modulesify": "^0.3.2",
+    "gulp": "^3.9.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "config": {
     "port": 3000

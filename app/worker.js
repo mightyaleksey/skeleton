@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || config.port;
 
-require('babel/register');
+require('babel/register')({ignore: /\.css$/});
 require('./configure')(app);
 require('./routes')(app);
 
