@@ -1,6 +1,8 @@
 'use strict';
 
+var browserify = require('browserify');
 var gulp = require('gulp');
+var source = require('vinyl-source-stream');
 
 /**
  * Starts the development server with live reload.
@@ -12,4 +14,12 @@ gulp.task('server', function () {
   gulp.watch(['app/@(controllers|modules|routes)/*.js', 'app/*.js'], function () {
     cluster.reload();
   });
+});
+
+gulp.task('js', function () {
+  browserify('./pages/index/browser.js')
+    .transform('babelify')
+    .bundle()
+    .pipe(source('index/browser.js'))
+    .pipe(gulp.dest('static'));
 });
