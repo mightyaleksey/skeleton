@@ -1,11 +1,12 @@
 'use strict';
 
+import { WIDTH } from '../constants';
+import { get } from 'mori';
+import { toString } from '../modules/coord';
+
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
 import Tile from './Tile';
-import { get } from 'mori';
-import { WIDTH } from '../constants';
-import { toString } from '../modules/coord';
 
 function select(state) {
   return {state: state.default};

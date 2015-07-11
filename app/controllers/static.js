@@ -1,6 +1,6 @@
 'use strict';
 
-import {join} from 'path';
+import { join } from 'path';
 import express from 'express';
 
 /**
@@ -8,6 +8,6 @@ import express from 'express';
  * @return {function}
  */
 export default function staticMiddleware(relativePath) {
-  var absolutePath = join(__dirname, '..', relativePath);
+  let absolutePath = join(__dirname, '..', relativePath);
   return express.static(absolutePath, {redirect: false});
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-import { RESET } from '../constants';
+import { MOVE, RESET } from '../constants';
 
 export function move(xy) {
   return {
