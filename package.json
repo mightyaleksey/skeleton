@@ -11,13 +11,17 @@
     "recluster": "^0.4.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.6",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "mocha": "^2.2.5"
   },
   "config": {
     "port": 3000
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel/register"
   },
   "repository": {
     "type": "git",
