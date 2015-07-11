@@ -2,5 +2,10 @@ doctype html
 html
   head
     title Demo
+    link(rel='stylesheet',href='/index/index.css')
 
-  body Hello, world!
+  body !{children}
+    script(type='text/javascript').
+      window.STATE_FROM_SERVER = !{state};
+
+    script(type='text/javascript', src='/index/index.js')
