@@ -4,11 +4,7 @@ import React, { Component } from 'react';
 
 class Tile extends Component {
   render() {
-    return (
-      <i className='tile'>
-        {this.props.children}
-      </i>
-    );
+    return <i className='tile'>{this.props.children}</i>;
   }
 }
 

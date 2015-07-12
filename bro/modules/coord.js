@@ -30,6 +30,14 @@ export function generatePoint() {
   }).join('');
 }
 
+export function iterate(iterator) {
+  for (let x = 0; x < WIDTH; ++x) {
+    for (let y = 0; y < WIDTH; ++y) {
+      iterator.call(null, `${toString(x)}${toString(y)}`, x, y);
+    }
+  }
+}
+
 export function toNumber(z) {
   return z.charCodeAt() - A;
 }

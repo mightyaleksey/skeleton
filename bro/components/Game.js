@@ -2,30 +2,24 @@
 
 import { WIDTH } from '../constants';
 import { get } from 'mori';
-import { toString } from '../modules/coord';
+import { iterate, toString } from '../modules/coord';
 
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
 import Tile from './Tile';
 
 function select(state) {
-  return {state: state.default};
+  return {
+    board: get(state.default, 'board'),
+    vision: get(state.default, 'vision')
+  };
 }
 
-function renderTiles({ state, dispatch }) {
+function renderBoard({ board, vision, dispatch }) {
   let tiles = [];
-
-  for (let x = 0; x < WIDTH; ++x) {
-    for (let y = 0; y < WIDTH; ++y) {
-      let xy = `${toString(x)}${toString(y)}`;
-
-      tiles.push(
-        <Tile key={xy} x={x} y={y}>
-          {get(state, xy)}
-        </Tile>
-      );
-    }
-  }
+  iterate((xy, x, y) => {
+    tiles.push(<Tile key={xy}>{get(board, xy)}</Tile>);
+  });
 
   return <div className='game'>{tiles}</div>;
 }
@@ -34,7 +28,7 @@ class Game extends Component {
   render() {
     return (
       <Connector select={select}>
-        {renderTiles}
+        {renderBoard}
       </Connector>
     );
   }
