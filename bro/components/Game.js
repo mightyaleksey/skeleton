@@ -1,6 +1,7 @@
 'use strict';
 
 import { WIDTH } from '../constants';
+
 import { get, partial } from 'mori';
 import { iterate, toString } from '../modules/coord';
 import { move } from '../actions';
@@ -18,9 +19,14 @@ function select(state) {
 
 function renderBoard({ board, vision, dispatch }) {
   let tiles = [];
-  iterate((xy, x, y) => {
+  iterate(xy => {
     let open = partial(dispatch, move(xy));
-    tiles.push(<Tile key={xy} onClick={open}>{get(vision, xy) ? get(board, xy) : ''}</Tile>);
+
+    tiles.push(
+      <Tile key={xy} onClick={open}>
+        {get(vision, xy) ? get(board, xy) : ''}
+      </Tile>
+    );
   });
 
   return <div className='game'>{tiles}</div>;

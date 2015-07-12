@@ -1,6 +1,7 @@
 'use strict';
 
 import { MINES, MOVE, RESET, WIDTH } from '../constants';
+
 import { assoc, assocIn, get, hashMap } from 'mori';
 import { adjacentPoints, iterate, Generator } from '../modules/coord';
 
