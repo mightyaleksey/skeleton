@@ -1,8 +1,7 @@
 'use strict';
 
-import { MOVE, RESET } from '../actions';
-import { MINES, WIDTH } from '../constants';
-import { assoc, get, hashMap } from 'mori';
+import { MINES, MOVE, RESET, WIDTH } from '../constants';
+import { assoc, assocIn, get, hashMap } from 'mori';
 import { adjacentPoints, iterate, Generator } from '../modules/coord';
 
 const initial = defaultState();
@@ -52,7 +51,7 @@ function filterMines(state) {
 export default function store(state = initial, action) {
   switch (action.type) {
   case MOVE:
-    console.log(action);
+    return assocIn(state, ['vision', action.coord], true);
   case RESET:
     return defaultState();
   default:
