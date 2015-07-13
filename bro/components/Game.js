@@ -12,12 +12,13 @@ import Tile from './Tile';
 
 function select(state) {
   return {
+    ingame: get(state.default, 'ingame'),
     board: get(state.default, 'board'),
     vision: get(state.default, 'vision')
   };
 }
 
-function renderBoard({ board, vision, dispatch }) {
+function renderBoard({ ingame, board, vision, dispatch }) {
   let tiles = [];
   iterate(xy => {
     let open = partial(dispatch, move(xy));
