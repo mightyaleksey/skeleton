@@ -3,16 +3,37 @@
 import { WIDTH } from '../constants';
 
 const A = 'a'.charCodeAt();
-const MATRIX = [
+
+const ADJOINING = [
   [-1, -1], [ 0, -1], [ 1, -1],
   [-1,  0], /* xy */  [ 1,  0],
   [-1,  1], [ 0,  1], [ 1,  1]
 ];
 
+const ADJACENT = [
+  [-1,  0], [ 0, -1],
+  [ 0,  1], [ 1,  0]
+];
+
 export function adjacentPoints(xy) {
   let [ x, y ] = xy.split('').map(toNumber);
 
-  return MATRIX.reduce((t, [ dx, dy ]) => {
+  return ADJACENT.reduce((t, [ dx, dy ]) => {
+    let _x = x + dx;
+    let _y = y + dy;
+
+    -1 < _x && _x < WIDTH &&
+    -1 < _y && _y < WIDTH &&
+      t.push(`${toString(_x)}${toString(_y)}`);
+
+    return t;
+  }, []);
+}
+
+export function adjoiningPoints(xy) {
+  let [ x, y ] = xy.split('').map(toNumber);
+
+  return ADJOINING.reduce((t, [ dx, dy ]) => {
     let _x = x + dx;
     let _y = y + dy;
 

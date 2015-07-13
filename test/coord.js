@@ -1,11 +1,11 @@
 'use strict';
 
 import { equal, deepEqual } from 'assert';
-import { adjacentPoints, generatePoint, toNumber, toString } from '../bro/modules/coord';
+import { adjoiningPoints, generatePoint, toNumber, toString } from '../bro/modules/coord';
 
 describe('coord.js', () => {
-  it('adjacentPoints(aa) -> [ ba, ab, bb ]', () => {
-    deepEqual(adjacentPoints('aa'), ['ba', 'ab', 'bb']);
+  it('adjoiningPoints(aa) -> [ ba, ab, bb ]', () => {
+    deepEqual(adjoiningPoints('aa'), ['ba', 'ab', 'bb']);
   });
 
   it('generatePoint() -> xx', () => {
