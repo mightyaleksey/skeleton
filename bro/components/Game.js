@@ -24,7 +24,7 @@ function renderBoard({ ingame, board, vision, dispatch }) {
     let open = partial(dispatch, move(xy));
 
     tiles.push(
-      <Tile key={xy} onClick={open}>
+      <Tile key={xy} visible={get(vision, xy)} onClick={open}>
         {get(vision, xy) ? get(board, xy) : ''}
       </Tile>
     );
