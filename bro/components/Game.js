@@ -4,7 +4,7 @@ import { WIDTH } from '../constants';
 
 import { get, partial } from 'mori';
 import { iterate, toString } from '../modules/coord';
-import { move } from '../actions';
+import { move, reset } from '../actions';
 
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
@@ -29,7 +29,12 @@ function renderBoard({ board, vision, dispatch }) {
     );
   });
 
-  return <div className='game'>{tiles}</div>;
+  return <div className='game'>
+    <button onClick={partial(dispatch, reset())}>reset</button>
+    <div className='board'>
+      {tiles}
+    </div>
+  </div>;
 }
 
 class Game extends Component {
