@@ -3,11 +3,21 @@
   display: block;
   float: left;
 
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 
   cursor: pointer;
   text-align: center;
 
-  border: 1px solid #999;
+  background: #fff;
+}
+
+.tile:hover
+{
+  background: #eee;
+}
+
+.tile:active
+{
+  background: #e0e0e0;
 }

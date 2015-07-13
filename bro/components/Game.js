@@ -31,6 +31,7 @@ function renderBoard({ board, vision, dispatch }) {
 
   return <div className='game'>
     <button onClick={partial(dispatch, reset())}>reset</button>
+    <br /><br />
     <div className='board'>
       {tiles}
     </div>

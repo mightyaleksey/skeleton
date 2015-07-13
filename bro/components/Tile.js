@@ -8,9 +8,4 @@ class Tile extends Component {
   }
 }
 
-Tile.propTypes = {
-  x: React.PropTypes.number,
-  y: React.PropTypes.number
-};
-
 export default Tile;

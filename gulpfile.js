@@ -12,7 +12,7 @@ gulp.task('server', function () {
   process.env.WORKERS = 1;
   var cluster = require('./app');
 
-  gulp.watch(['bro/*/*.css'], ['css']);
+  gulp.watch(['bro/*/*.css', 'pages/*/*.css'], ['css']);
   gulp.watch(['bro/*/*.js', 'pages/*/*.js'], ['js']);
   gulp.watch(['app/@(controllers|modules|routes)/*.js', 'app/*.js', 'bro/*/*.js'], function () {
     cluster.reload();
@@ -20,7 +20,7 @@ gulp.task('server', function () {
 });
 
 gulp.task('css', function () {
-  gulp.src('bro/*/*.css')
+  gulp.src(['pages/*/*.css', 'bro/*/*.css'])
     .pipe(concat('index/index.css'))
     .pipe(gulp.dest('static'));
 });
