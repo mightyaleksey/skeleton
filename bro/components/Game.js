@@ -14,12 +14,13 @@ import Tile from './Tile';
 function select(state) {
   return {
     ingame: get(state.default, 'ingame'),
+    success: get(state.default, 'success'),
     board: get(state.default, 'board'),
     vision: get(state.default, 'vision')
   };
 }
 
-function renderBoard({ ingame, board, vision, dispatch }) {
+function renderBoard({ ingame, success, board, vision, dispatch }) {
   let tiles = [];
   iterate(xy => {
     let open = partial(dispatch, move(xy));
@@ -31,8 +32,17 @@ function renderBoard({ ingame, board, vision, dispatch }) {
     );
   });
 
+  let state = '';
+  if (!ingame) {
+    state = success
+      ? 'happy'
+      : 'upset';
+  }
+
   return <div className='game'>
-    <Face onClick={partial(dispatch, reset())} />
+    <Face
+      onClick={partial(dispatch, reset())}
+      state={state} />
     <br /><br />
     <div className='board'>
       {tiles}

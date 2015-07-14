@@ -10,6 +10,7 @@ const initial = defaultState();
 function defaultState() {
   return hashMap(
     'ingame', true,
+    'success', false,
     'board', generateBoard(),
     'vision', hashMap()
   );
@@ -85,7 +86,7 @@ export default function store(state = initial, action) {
 
     if (point === '*') {
       // game over
-      state = assoc(state, 'ingame', false);
+      state = assoc(state, 'ingame', false, 'success', false);
     }
 
     return assocIn(state, ['vision', action.coord], true);

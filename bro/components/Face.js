@@ -5,11 +5,7 @@ import React, { Component } from 'react';
 class Face extends Component {
   constructor(props) {
     super();
-
-    this.state = {
-      current: '',
-      default: props.state || ''
-    };
+    this.state = {current: props.state || ''};
   }
 
   onMouseDown() {
@@ -17,13 +13,13 @@ class Face extends Component {
   }
 
   onMouseUp() {
-    this.setState({current: this.state.default});
+    this.setState({current: this.props.state || ''});
   }
 
   render() {
     var classes = 'face';
-    if (this.state.current) {
-      classes += ` face--${this.state.current}`;
+    if (this.state.current || this.props.state) {
+      classes += ` face--${this.state.current || this.props.state}`;
     }
 
     return <a
