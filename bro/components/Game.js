@@ -8,6 +8,7 @@ import { move, reset } from '../actions';
 
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
+import Face from './Face';
 import Tile from './Tile';
 
 function select(state) {
@@ -31,7 +32,7 @@ function renderBoard({ ingame, board, vision, dispatch }) {
   });
 
   return <div className='game'>
-    <button onClick={partial(dispatch, reset())}>reset</button>
+    <Face onClick={partial(dispatch, reset())} />
     <br /><br />
     <div className='board'>
       {tiles}

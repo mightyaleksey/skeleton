@@ -1,0 +1,27 @@
+.face
+{
+  display: inline-block;
+  overflow: hidden;
+
+  width: 45px;
+  height: 45px;
+
+  text-indent: -1000px;
+
+  background: url(/index/Face.png) -96px 0 no-repeat;
+}
+
+.face--confused
+{
+  background: url(/index/Face.png) -144px 0 no-repeat;
+}
+
+.face--happy
+{
+  background: url(/index/Face.png) -48px 0 no-repeat;
+}
+
+.face--upset
+{
+  background: url(/index/Face.png) 0px 0 no-repeat;
+}
