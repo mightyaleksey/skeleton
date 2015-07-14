@@ -8,7 +8,7 @@ var source = require('vinyl-source-stream');
 /**
  * Starts the development server with live reload.
  */
-gulp.task('server', function () {
+gulp.task('server', ['css', 'js', 'pic'], function () {
   process.env.WORKERS = 1;
   var cluster = require('./app');
 
@@ -31,4 +31,9 @@ gulp.task('js', function () {
     .bundle()
     .pipe(source('index/index.js'))
     .pipe(gulp.dest('static'));
+});
+
+gulp.task('pic', function () {
+  gulp.src('bro/components/*.png')
+    .pipe(gulp.dest('static/index'));
 });
