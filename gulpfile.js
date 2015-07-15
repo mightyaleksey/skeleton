@@ -3,6 +3,7 @@
 var browserify = require('browserify');
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var lrload = require('livereactload');
 var source = require('vinyl-source-stream');
 
 /**
@@ -17,6 +18,8 @@ gulp.task('server', ['css', 'js', 'pic'], function () {
   gulp.watch(['app/@(controllers|modules|routes)/*.js', 'app/*.js', 'bro/*/*.js'], function () {
     cluster.reload();
   });
+
+  lrload.monitor('static/index/index.js', {displayNotification: true});
 });
 
 gulp.task('css', function () {
@@ -26,9 +29,17 @@ gulp.task('css', function () {
 });
 
 gulp.task('js', function () {
-  browserify('pages/index/index.js')
+  browserify({entries: 'pages/index/index.js', fullPaths: true})
     .transform('babelify')
+    .transform(lrload)
     .bundle()
+    .on('error', function (err) {
+      var msg = err.codeFrame
+        ? err.codeFrame + '\n' + err.message
+        : err.message;
+
+      console.error(msg);
+    })
     .pipe(source('index/index.js'))
     .pipe(gulp.dest('static'));
 });
