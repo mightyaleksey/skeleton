@@ -21,17 +21,16 @@ function select(state) {
 }
 
 function renderBoard({ ingame, success, board, vision, dispatch }) {
-  let tiles = [];
-  iterate(xy => {
-    let open = partial(dispatch, move(xy));
+  return (
+    <div className='game'>
+      { renderFace(ingame, success, dispatch) }
+      <br/><br/>
+      <div className='board'>{ renderTiles(ingame, board, vision, dispatch) }</div>
+    </div>
+  );
+}
 
-    tiles.push(
-      <Tile key={xy} visible={get(vision, xy)} onClick={open}>
-        {get(vision, xy) ? get(board, xy) : ''}
-      </Tile>
-    );
-  });
-
+function renderFace(ingame, success, dispatch) {
   let state = '';
   if (!ingame) {
     state = success
@@ -39,15 +38,22 @@ function renderBoard({ ingame, success, board, vision, dispatch }) {
       : 'upset';
   }
 
-  return <div className='game'>
-    <Face
-      onClick={partial(dispatch, reset())}
-      state={state} />
-    <br /><br />
-    <div className='board'>
-      {tiles}
-    </div>
-  </div>;
+  return (<Face onClick={ partial(dispatch, reset()) } state={ state }/>);
+}
+
+function renderTiles(ingame, board, vision, dispatch) {
+  return iterate(xy => {
+    let props = {
+      onClick: partial(dispatch, move(xy)),
+      visible: get(vision, xy)
+    };
+
+    return (
+      <Tile key={ xy } { ...props }>
+        { get(vision, xy) ? get(board, xy) : '' }
+      </Tile>
+    );
+  });
 }
 
 class Game extends Component {

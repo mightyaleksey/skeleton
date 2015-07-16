@@ -52,11 +52,15 @@ export function generatePoint() {
 }
 
 export function iterate(iterator) {
+  let accumulation = [];
+
   for (let x = 0; x < WIDTH; ++x) {
     for (let y = 0; y < WIDTH; ++y) {
-      iterator.call(null, `${toString(x)}${toString(y)}`, x, y);
+      accumulation.push(iterator.call(null, `${toString(x)}${toString(y)}`, x, y));
     }
   }
+
+  return accumulation;
 }
 
 export function toNumber(z) {

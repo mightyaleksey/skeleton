@@ -1,16 +1,17 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class Tile extends Component {
   render() {
-    let classes = 'tile';
-    let visible = this.props.visible;
-    if (visible) {
-      classes += ' tile--opened';
-    }
+    let { visible, onClick } = this.props;
+    let classes = 'tile' + (visible ? ' tile--opened' : '');
 
-    return <i className={classes} onClick={this.props.onClick}>{this.props.children}</i>;
+    return (
+      <i className={ classes } onClick={ onClick }>
+        { this.props.children }
+      </i>
+    );
   }
 }
 

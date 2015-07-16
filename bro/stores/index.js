@@ -54,6 +54,10 @@ function filterPoints(state, value) {
 export default function store(state = initial, action) {
   switch (action.type) {
   case MOVE:
+    if (!get(state, 'ingame')) {
+      return state;
+    }
+
     let point = getIn(state, ['board', action.coord]);
 
     if (point === 0) {
