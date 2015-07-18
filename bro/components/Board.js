@@ -2,7 +2,7 @@
 
 import { get, partial } from 'mori';
 import { iterate } from '../modules/utils';
-import { move } from '../actions';
+import { move, pending } from '../actions';
 
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
@@ -28,6 +28,9 @@ function renderBoard({ board, vision, dispatch }) {
     const props = {
       key: xy,
       onClick: partial(dispatch, move(xy)),
+      onMouseDown: partial(dispatch, pending(true)),
+      onMouseOut: partial(dispatch, pending(false)),
+      onMouseUp: partial(dispatch, pending(false)),
       visible: get(vision, xy)
     };
 
