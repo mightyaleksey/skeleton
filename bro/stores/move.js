@@ -2,7 +2,7 @@
 
 import { assoc, assocIn, get, getIn, hashMap, merge, zipmap } from 'mori';
 import { default as fill } from 'lodash/array/fill';
-import { default as _ } from '../modules/chain';
+import { default as _ } from '../modules/chain';  // custom build with chain,filter,map,value
 import { adjacent } from '../modules/utils';
 
 const filterEmpty = state => xy => getIn(state, ['board', xy]) === 0;
