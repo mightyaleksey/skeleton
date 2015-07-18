@@ -4,7 +4,7 @@ import { MOVE, RESET } from '../constants';
 
 export function move(xy) {
   return {
-    coord: xy,
+    position: xy,
     type: MOVE
   };
 }

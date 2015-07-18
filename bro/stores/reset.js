@@ -10,12 +10,15 @@ import { Generator } from '../modules/generate';
 import { adjoining, iterate } from '../modules/utils';
 
 const gen = new Generator;
-const filter = (state, value) => xy => get(state, xy) === value;
+const filterMines = state => xy => get(state, xy) === '*';
 
 export default function reset() {
   return hashMap(
-    'ingame', true,
-    'success', false,
+    'game', hashMap(
+      'ingame', true,
+      'pending', false,
+      'success', false
+    ),
     'board', board(),
     'vision', hashMap()
   );
@@ -31,7 +34,7 @@ function board() {
     .value();
 
   const state = hashMap.apply(null, mines);
-  const isMine = filter(state, '*');
+  const isMine = filterMines(state);
 
   const points = _(iterate(identity))
     .filter(negate(isMine))
