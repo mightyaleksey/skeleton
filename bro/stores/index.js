@@ -1,12 +1,14 @@
 'use strict';
 
-import { MOVE, RESET } from '../constants';
+import { MOVE, PENDING, RESET } from '../constants';
 
 import { default as move } from './move';
+import { default as pending } from './pending';
 import { default as reset } from './reset';
 
 export default createStore({}, {
   [ MOVE ]: move,
+  [ PENDING ]: pending,
   [ RESET ]: reset
 });
 

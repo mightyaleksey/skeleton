@@ -15,8 +15,8 @@ const filterMines = state => xy => get(state, xy) === '*';
 export default function reset() {
   return hashMap(
     'game', hashMap(
+      'inaction', false,
       'ingame', true,
-      'pending', false,
       'success', false
     ),
     'board', board(),
