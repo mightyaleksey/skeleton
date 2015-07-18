@@ -3,7 +3,8 @@
 import { WIDTH } from '../constants';
 
 import { get, partial } from 'mori';
-import { iterate, toString } from '../modules/coord';
+import { iterate } from '../modules/utils';
+import { toString } from '../modules/coord';
 import { move, reset } from '../actions';
 
 import React, { Component } from 'react';

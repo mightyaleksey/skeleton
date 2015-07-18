@@ -9,6 +9,7 @@
     "express": "^4.13.0",
     "jade": "^1.11.0",
     "livereactload-api": "^0.5.1",
+    "lodash": "^3.10.0",
     "mori": "^0.3.2",
     "react": "^0.13.3",
     "recluster": "^0.4.0",
@@ -20,6 +21,7 @@
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "livereactload": "^0.6.0",
+    "lodash-cli": "^3.10.0",
     "mocha": "^2.2.5",
     "vinyl-source-stream": "^1.1.0"
   },
@@ -27,6 +29,7 @@
     "port": 3000
   },
   "scripts": {
+    "_": "lodash strict include=chain,filter,flatten,map,range,value exports=node -o bro/modules/chain.js",
     "test": "mocha --compilers js:babel/register"
   },
   "repository": {
