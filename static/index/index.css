@@ -1,0 +1,77 @@
+body
+{
+  padding: 15px;
+
+  background: #f9f9f9;
+}
+
+.board
+{
+  display: inline-block;
+
+  width: 270px;
+
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.face
+{
+  display: inline-block;
+  overflow: hidden;
+
+  width: 45px;
+  height: 45px;
+
+  text-indent: -1000px;
+
+  background: url(Face.png) -96px 0 no-repeat;
+}
+
+.face--confused
+{
+  background: url(Face.png) -144px 0 no-repeat;
+}
+
+.face--happy
+{
+  background: url(Face.png) -48px 0 no-repeat;
+}
+
+.face--upset
+{
+  background: url(Face.png) 0px 0 no-repeat;
+}
+
+.game
+{
+  text-align: center;
+}
+
+.tile
+{
+  font-family: roboto, arial;
+  font-size: 13px;
+  font-style: normal;
+  line-height: 30px;
+
+  display: block;
+  float: left;
+
+  width: 30px;
+  height: 30px;
+
+  cursor: pointer;
+  text-align: center;
+
+  background: #fff;
+}
+
+.tile:hover
+{
+  background: #eee;
+}
+
+.tile:active
+{
+  background: #e0e0e0;
+}
