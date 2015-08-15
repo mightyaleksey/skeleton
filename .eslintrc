@@ -1,0 +1,15 @@
+{
+  "extends": "eslint-config-airbnb-lite",
+  "env": {
+    "es6": true,
+    "mocha": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+  }
+}

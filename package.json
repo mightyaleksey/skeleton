@@ -16,13 +16,20 @@
     "redux": "^0.12.0"
   },
   "devDependencies": {
+    "babel-eslint": "^4.0.6",
     "babelify": "^6.1.2",
     "browserify": "^10.2.6",
+    "eslint": "^1.1.0",
+    "eslint-config-airbnb": "0.0.7",
+    "eslint-config-airbnb-lite": "^1.0.3",
+    "eslint-plugin-react": "^3.2.2",
+    "eslint-watch": "^1.2.5",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "livereactload": "^0.6.0",
     "lodash-cli": "^3.10.0",
     "mocha": "^2.2.5",
+    "precommit-hook": "^3.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "config": {
@@ -30,7 +37,8 @@
   },
   "scripts": {
     "_": "lodash strict include=chain,filter,flatten,map,range,value exports=node -o bro/modules/chain.js",
-    "test": "mocha --compilers js:babel/register"
+    "test": "mocha --compilers js:babel/register",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -47,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/sullenor/skeleton/issues"
   },
-  "homepage": "https://github.com/sullenor/skeleton"
+  "homepage": "https://github.com/sullenor/skeleton",
+  "pre-commit": [
+    "lint"
+  ]
 }
