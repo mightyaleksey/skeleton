@@ -1,6 +1,4 @@
-'use strict';
-
-let debug = require('debug')('render');
+const debug = require('debug')('render');
 
 export default function renderMiddleware(req, res) {
   let page = res.locals.page;
@@ -10,4 +8,4 @@ export default function renderMiddleware(req, res) {
 
   debug(res.locals);
   res.render(page, res.locals);
-};
+}

@@ -1,8 +1,6 @@
-'use strict';
-
 import { MINES, WIDTH } from '../constants';
 
-import { toJs, assoc, assocIn, count, get, getIn, hashMap, merge, zipmap } from 'mori';
+import { assoc, assocIn, count, get, getIn, hashMap, merge, zipmap } from 'mori';
 import { default as fill } from 'lodash/array/fill';
 import { default as _ } from '../modules/chain';  // custom build with chain,filter,map,value
 import { adjacent } from '../modules/utils';
@@ -47,19 +45,22 @@ export default function move(state, action) {
 
     const queue = [action.position];
     const visited = {
-      [ action.position ]: true
+      [ action.position ]: true,
+    };
+
+    const isVisited = xy => !visited[xy];
+    const markPoint = xy => {
+      queue.push(xy);
+      visited[xy] = true;
     };
 
     while (queue.length) {
-      let empty = queue.pop();
+      const empty = queue.pop();
       points.push(empty);
 
       _(adjacent(empty).filter(isEmpty))
-        .filter(xy => !visited[xy])
-        .map(xy => {
-          queue.push(xy);
-          visited[xy] = true;
-        })
+        .filter(isVisited)
+        .map(markPoint)
         .value();
     }
 

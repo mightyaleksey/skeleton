@@ -1,5 +1,3 @@
-'use strict';
-
 import { equal, deepEqual } from 'assert';
 import { adjoiningPoints, generatePoint, toNumber, toString } from '../bro/modules/coord';
 

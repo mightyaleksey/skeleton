@@ -1,11 +1,9 @@
-'use strict';
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 class Tile extends Component {
   render() {
-    let { visible } = this.props;
-    let classes = 'tile' + (visible ? ' tile--opened' : '');
+    const { visible } = this.props;
+    const classes = 'tile' + (visible ? ' tile--opened' : '');
 
     return (
       <i className={ classes } { ...this.props }>

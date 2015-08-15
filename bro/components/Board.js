@@ -1,5 +1,3 @@
-'use strict';
-
 import { get, partial } from 'mori';
 import { iterate } from '../modules/utils';
 import { move, pending } from '../actions';
@@ -10,18 +8,8 @@ import Tile from './Tile';
 
 const select = state => ({
   board: get(state.default, 'board'),
-  vision: get(state.default, 'vision')
+  vision: get(state.default, 'vision'),
 });
-
-class Board extends Component {
-  render() {
-    return (
-      <Connector select={ select }>
-        { renderBoard }
-      </Connector>
-    );
-  }
-}
 
 function renderBoard({ board, vision, dispatch }) {
   const tiles = iterate(xy => {
@@ -31,7 +19,7 @@ function renderBoard({ board, vision, dispatch }) {
       onMouseDown: partial(dispatch, pending(true)),
       onMouseOut: partial(dispatch, pending(false)),
       onMouseUp: partial(dispatch, pending(false)),
-      visible: get(vision, xy)
+      visible: get(vision, xy),
     };
 
     return (
@@ -46,6 +34,16 @@ function renderBoard({ board, vision, dispatch }) {
       { tiles }
     </div>
   );
+}
+
+class Board extends Component {
+  render() {
+    return (
+      <Connector select={ select }>
+        { renderBoard }
+      </Connector>
+    );
+  }
 }
 
 export default Board;

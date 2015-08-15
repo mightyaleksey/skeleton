@@ -38,7 +38,8 @@
   "scripts": {
     "_": "lodash strict include=chain,filter,flatten,map,range,value exports=node -o bro/modules/chain.js",
     "test": "mocha --compilers js:babel/register",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "watch": "esw -w ."
   },
   "repository": {
     "type": "git",

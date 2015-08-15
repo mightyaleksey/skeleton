@@ -11,5 +11,7 @@
     "react"
   ],
   "rules": {
+    "no-param-reassign": 0,
+    "react/jsx-uses-react": 1
   }
 }

@@ -1,23 +1,21 @@
-'use strict';
-
 import { MOVE, PENDING, RESET } from '../constants';
 
 export function move(xy) {
   return {
     position: xy,
-    type: MOVE
+    type: MOVE,
   };
 }
 
 export function pending(value) {
   return {
     type: PENDING,
-    value: value
+    value: value,
   };
 }
 
 export function reset() {
   return {
-    type: RESET
+    type: RESET,
   };
 }

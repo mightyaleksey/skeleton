@@ -1,5 +1,3 @@
-'use strict';
-
 const A = 'a'.charCodeAt();
 
 export function toNumber(l) {

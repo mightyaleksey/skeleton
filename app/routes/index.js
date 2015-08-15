@@ -1,5 +1,3 @@
-'use strict';
-
 import detectmobile from '../controllers/detectmobile';
 import prerender from '../controllers/prerender';
 import render from '../controllers/render';
@@ -10,7 +8,7 @@ export default function routes(app) {
   app.get('/', [
     detectmobile,
     prerender,
-    render
+    render,
   ]);
 
   app.use('/', statix('../static'));

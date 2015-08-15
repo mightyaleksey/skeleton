@@ -1,5 +1,3 @@
-'use strict';
-
 import { createRedux } from 'redux';
 import { reset } from '../../bro/actions';
 import { toJs } from 'mori';
@@ -19,4 +17,4 @@ export default function prerender(req, res, next) {
   res.locals.state = JSON.stringify(state);
 
   next();
-};
+}

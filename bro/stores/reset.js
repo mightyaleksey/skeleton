@@ -1,6 +1,4 @@
-'use strict';
-
-import { MINES, WIDTH } from '../constants';
+import { MINES } from '../constants';
 
 import { assoc, get, hashMap } from 'mori';
 import { default as identity } from 'lodash/utility/identity';
@@ -11,18 +9,6 @@ import { adjoining, iterate } from '../modules/utils';
 
 const gen = new Generator;
 const filterMines = state => xy => get(state, xy) === '*';
-
-export default function reset() {
-  return hashMap(
-    'game', hashMap(
-      'inaction', false,
-      'ingame', true,
-      'success', false
-    ),
-    'board', board(),
-    'vision', hashMap()
-  );
-}
 
 function board() {
   gen.drop();
@@ -43,4 +29,16 @@ function board() {
     .value();
 
   return assoc.apply(null, [state].concat(points));
+}
+
+export default function reset() {
+  return hashMap(
+    'game', hashMap(
+      'inaction', false,
+      'ingame', true,
+      'success', false
+    ),
+    'board', board(),
+    'vision', hashMap()
+  );
 }

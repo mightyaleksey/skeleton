@@ -1,5 +1,3 @@
-'use strict';
-
 import { getIn, partial } from 'mori';
 import { pending, reset } from '../actions';
 
@@ -9,18 +7,8 @@ import { Connector } from 'redux/react';
 const select = state => ({
   inaction: getIn(state.default, ['game', 'inaction']),
   ingame: getIn(state.default, ['game', 'ingame']),
-  success: getIn(state.default, ['game', 'success'])
+  success: getIn(state.default, ['game', 'success']),
 });
-
-class Face extends Component {
-  render() {
-    return (
-      <Connector select={ select }>
-        { renderFace }
-      </Connector>
-    );
-  }
-}
 
 function renderFace({ ingame, inaction, success, dispatch }) {
   const mod = inaction
@@ -32,10 +20,20 @@ function renderFace({ ingame, inaction, success, dispatch }) {
     onClick: partial(dispatch, reset()),
     onMouseDown: partial(dispatch, pending(true)),
     onMouseOut: partial(dispatch, pending(false)),
-    onMouseUp: partial(dispatch, pending(false))
+    onMouseUp: partial(dispatch, pending(false)),
   };
 
   return (<a { ...props }/>);
+}
+
+class Face extends Component {
+  render() {
+    return (
+      <Connector select={ select }>
+        { renderFace }
+      </Connector>
+    );
+  }
 }
 
 export default Face;

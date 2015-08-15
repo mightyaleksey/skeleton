@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component } from 'react';
 import Board from './Board';
 import Face from './Face';

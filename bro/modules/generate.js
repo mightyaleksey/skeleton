@@ -1,10 +1,6 @@
-'use strict';
-
 import { WIDTH } from '../constants';
 
 import { toString } from './coord';
-
-const LIMIT = WIDTH * WIDTH;
 
 export function abscissa() {
   return toString(Math.round(Math.random() * (WIDTH - 1)));
@@ -26,8 +22,9 @@ export class Generator {
 
   generate() {
     let xy = point();
-    while (this.cache[xy])
+    while (this.cache[xy]) {
       xy = point();
+    }
 
     this.cache[xy] = true;
     return xy;

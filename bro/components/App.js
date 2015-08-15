@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import Game from './Game';
 import { Provider } from 'redux/react';
