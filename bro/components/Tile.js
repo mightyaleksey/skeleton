@@ -1,12 +1,16 @@
+import styles from './Tile.css';
 import React, { Component } from 'react';
 
 class Tile extends Component {
   render() {
     const { visible } = this.props;
-    const classes = 'tile' + (visible ? ' tile--opened' : '');
+    const classNames = [styles.component];
+    if (visible) {
+      classNames.push(styles.opened);
+    }
 
     return (
-      <i className={ classes } { ...this.props }>
+      <i className={ classNames.join(' ') } { ...this.props }>
         { this.props.children }
       </i>
     );

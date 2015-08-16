@@ -24,6 +24,7 @@
     "babel-eslint": "^4.0.6",
     "babelify": "^6.1.2",
     "browserify": "^10.2.6",
+    "css-modulesify": "^0.5.0",
     "eslint": "^1.1.0",
     "eslint-config-airbnb": "0.0.7",
     "eslint-config-airbnb-lite": "^1.0.3",

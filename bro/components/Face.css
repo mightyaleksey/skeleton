@@ -1,4 +1,4 @@
-.face
+.component
 {
   display: inline-block;
   overflow: hidden;
@@ -11,17 +11,17 @@
   background: url(/index/Face.png) -96px 0 no-repeat;
 }
 
-.face--confused
+.confused
 {
   background: url(/index/Face.png) -144px 0 no-repeat;
 }
 
-.face--happy
+.happy
 {
   background: url(/index/Face.png) -48px 0 no-repeat;
 }
 
-.face--upset
+.upset
 {
   background: url(/index/Face.png) 0px 0 no-repeat;
 }

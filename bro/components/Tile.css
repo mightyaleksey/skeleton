@@ -1,4 +1,4 @@
-.tile
+.component
 {
   font-family: roboto, arial;
   font-size: 13px;
@@ -17,12 +17,12 @@
   background: #fff;
 }
 
-.tile:hover
+.component:hover
 {
   background: #eee;
 }
 
-.tile:active
+.component:active
 {
   background: #e0e0e0;
 }

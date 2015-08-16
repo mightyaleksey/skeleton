@@ -9,11 +9,10 @@ var source = require('vinyl-source-stream');
 /**
  * Starts the development server with live reload.
  */
-gulp.task('server', ['css', 'js', 'pic'], function () {
+gulp.task('server', ['js', 'pic'], function () {
   process.env.WORKERS = 1;
   var cluster = require('./app');
 
-  gulp.watch(['bro/*/*.css', 'pages/*/*.css'], ['css']);
   gulp.watch(['bro/*/*.js', 'pages/*/*.js'], ['js']);
   gulp.watch(['app/@(controllers|modules|routes)/*.js', 'app/*.js', 'bro/*/*.js'], function () {
     cluster.reload();
@@ -22,16 +21,14 @@ gulp.task('server', ['css', 'js', 'pic'], function () {
   lrload.monitor('static/index/index.js', {displayNotification: true});
 });
 
-gulp.task('css', function () {
-  gulp.src(['pages/*/*.css', 'bro/*/*.css'])
-    .pipe(concat('index/index.css'))
-    .pipe(gulp.dest('static'));
-});
-
 gulp.task('js', function () {
   browserify({entries: 'pages/index/index.js', fullPaths: true})
     .transform('babelify')
     .transform(lrload)
+    .plugin('css-modulesify', {
+      rootDir: __dirname,
+      output: 'static/index/index.css'
+    })
     .bundle()
     .on('error', function (err) {
       var msg = err.codeFrame

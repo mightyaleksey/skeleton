@@ -2,6 +2,7 @@ import { get, partial } from 'mori';
 import { iterate } from '../modules/utils';
 import { move, pending } from '../actions';
 
+import styles from './Board.css';
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
 import Tile from './Tile';
@@ -30,7 +31,7 @@ function renderBoard({ board, vision, dispatch }) {
   });
 
   return (
-    <div className='board'>
+    <div className={ styles.component }>
       { tiles }
     </div>
   );

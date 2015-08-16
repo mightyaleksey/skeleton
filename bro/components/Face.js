@@ -1,6 +1,7 @@
 import { getIn, partial } from 'mori';
 import { pending, reset } from '../actions';
 
+import styles from './Face.css';
 import React, { Component } from 'react';
 import { Connector } from 'redux/react';
 
@@ -11,12 +12,16 @@ const select = state => ({
 });
 
 function renderFace({ ingame, inaction, success, dispatch }) {
-  const mod = inaction
-    ? ' face--confused'
-    : !ingame && (success ? ' face--happy' : ' face--upset') || '';
+  const classNames = [styles.component];
+
+  if (inaction) {
+    classNames.push(styles.confused);
+  } else if (!ingame) {
+    classNames.push(success ? styles.happy : styles.upset);
+  }
 
   const props = {
-    className: 'face' + mod,
+    className: classNames.join(' '),
     onClick: partial(dispatch, reset()),
     onMouseDown: partial(dispatch, pending(true)),
     onMouseOut: partial(dispatch, pending(false)),
