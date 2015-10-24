@@ -3,43 +3,18 @@
   "version": "1.0.0",
   "description": "A simple project-stub to show the basic ideas. Also serves you as a quick start for your project",
   "main": "app/index.js",
-  "dependencies": {
-    "babel": "^5.6.14",
-    "debug": "^2.2.0",
-    "express": "^4.13.0",
-    "jade": "^1.11.0",
-    "livereactload-api": "^0.5.1",
-    "lodash": "^3.10.0",
-    "mori": "^0.3.2",
-    "react": "^0.13.3",
-    "recluster": "^0.4.0",
-    "redux": "^0.12.0"
-  },
-  "devDependencies": {
-    "babel-eslint": "^4.0.6",
-    "babelify": "^6.1.2",
-    "browserify": "^10.2.6",
-    "eslint": "^1.1.0",
-    "eslint-config-airbnb": "0.0.7",
-    "eslint-config-airbnb-lite": "^1.0.3",
-    "eslint-plugin-react": "^3.2.2",
-    "eslint-watch": "^1.2.5",
-    "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0",
-    "livereactload": "^0.6.0",
-    "lodash-cli": "^3.10.0",
-    "mocha": "^2.2.5",
-    "precommit-hook": "^3.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
   "config": {
     "port": 3000
   },
   "scripts": {
-    "_": "lodash strict include=chain,filter,flatten,map,range,value exports=node -o bro/modules/chain.js",
-    "test": "mocha --compilers js:babel/register",
-    "lint": "eslint .",
-    "watch": "esw -w ."
+    "start": "babel-node app/"
+  },
+  "dependencies": {
+    "babel": "^5.8.29",
+    "express": "^4.13.3",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "recluster": "^0.4.2"
   },
   "repository": {
     "type": "git",
@@ -48,16 +23,12 @@
   "keywords": [
     "babel",
     "express",
-    "jade",
     "react"
   ],
-  "author": "",
+  "author": "Alexey Litvinov",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sullenor/skeleton/issues"
   },
-  "homepage": "https://github.com/sullenor/skeleton",
-  "pre-commit": [
-    "lint"
-  ]
+  "homepage": "https://github.com/sullenor/skeleton"
 }

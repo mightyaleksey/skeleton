@@ -1,15 +1,16 @@
-'use strict';
+import express from 'express';
+import reactEngine from './react-engine';
+import { join } from 'path';
+import { config } from '../package';
 
-var config = require('../package').config || {};
-var express = require('express');
+const env = process.env.NODE_ENV || 'development';
+const port = process.env.PORT || config.port || 3000;
+const app = express();
 
-var app = express();
-var port = process.env.PORT || config.port;
+app.engine('js', reactEngine);
+app.set('views', join(__dirname, '../components'));
+app.set('view engine', 'js');
 
-require('babel/register');
-require('./configure')(app);
-require('./routes')(app);
+app.use((req, res) => res.render('page', {title: 'demo'}));
 
-app.listen(port, function () {
-  console.log('listening %s', port);
-});
+app.listen(port, _ => console.log('listening %s', port));
