@@ -1,23 +1,13 @@
-'use strict';
+import recluster from 'recluster';
+import { join } from 'path';
+import { config } from '../package';
 
-var path = require('path');
-var recluster = require('recluster');
-var worker = path.join(__dirname, 'worker.js');
-var workers = process.env.WORKERS || undefined;
+const env = process.env.NODE_ENV || 'development';
+const workers = env !== 'development'
+  ? process.env.WORKERS || config.workers
+  : 1;
 
-var cluster = recluster(worker, {workers: workers});
-
+const cluster = recluster(join(__dirname, 'worker'), {workers: workers});
 cluster.run();
 
-// Making cluster accessible from parent modules.
-// Helps to build live reload server with gulp.
-if (module.parent) {
-  return module.exports = cluster;
-}
-
-process.on('SIGUSR2', function () {
-  console.log('reloading');
-  cluster.reload();
-});
-
-console.log('spawned cluster %s', process.pid);
+export default cluster;
